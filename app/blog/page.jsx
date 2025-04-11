@@ -41,12 +41,18 @@ export default function BlogPage() {
               href={post.link}
               data-id={post.uid}
             >
-              <div className="flex flex-col space-y-1">
-                <h4 className="font-normal dark:text-zinc-100">{post.title}</h4>
-                <p className="text-black-500 dark:text-zinc-400">
-                  {post.description}
-                </p>
-              </div>
+              <div className="flex flex-row items-start justify-between space-x-4">
+
+  <div className="flex flex-col space-y-1">
+    <h4 className="font-bold dark:text-zinc-100">{post.title}</h4>
+    <p className="italic text-gray-500 dark:text-zinc-400">
+      {post.description}
+    </p>
+  </div>
+
+</div>
+
+
             </Link>
           ))}
         </AnimatedBackground>

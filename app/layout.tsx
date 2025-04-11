@@ -12,9 +12,9 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Nim - Personal website template',
+  title: 'Khalil Tahraoui',
   description:
-    'Nim is a free and open-source personal website template built with Next.js 15, React 19 and Motion-Primitives.',
+    "I'm Khalil Tahraoui, a software engineer exploring cloud computing, Web3, and distributed systems. I build tools to streamline DevOps, solve complex logic problems, and push the boundaries of scalable infrastructure."
 }
 
 const geist = Geist({

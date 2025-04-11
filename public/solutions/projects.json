@@ -1,15 +1,19 @@
 [{
-        "name": "Project 1",
-        "description": "This is a cool project.",
-        "link": "https://example.com",
-        "github": "https://github.com/example",
-        "image": "https://images.unsplash.com/photo-1742943679521-f4736500a471?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "name": "AlgoVisu",
+        "abbr": "AV",
+        "description": "A web app to visualize algorithms built with Vite, React ",
+        "link": "https://algovisu.netlify.app/",
+        "github": "https://github.com/0xQuirKai/algoVisu",
+        "image": "/algovisu.jpg",
+        "tags": ["Web"]
     },
     {
-        "name": "Project 2",
-        "description": "Another awesome project.",
-        "link": "https://example.com",
-        "github": "https://github.com/example",
-        "image": "/images/project2.jpg"
+        "name": "GoFlow",
+        "abbr": "CICD",
+        "description": "A Golang-based CI/CD system supporting any programming language.",
+        "link": "https://github1s.com/0xQuirKai/golang-Ci-Cd-system",
+        "github": "https://github.com/0xQuirKai/golang-Ci-Cd-system",
+        "image": "/cicd.jpg",
+        "tags": ["Go"]
     }
 ]

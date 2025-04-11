@@ -3,62 +3,67 @@
 import { motion } from "framer-motion";
 import {  FaGithub } from "react-icons/fa";
 
-import Image from "next/image";
+const VARIANTS_CONTAINER = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+}
+const VARIANTS_SECTION = {
+  hidden: { opacity: 0, y: 20, filter: 'blur(8px)' },
+  visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+}
+
+const TRANSITION_SECTION = {
+  duration: 0.3,
+}
+
+
 
 export default function AboutPage() {
   return (
-    <motion.main className="space-y-16 px-6 py-12" initial="hidden" animate="visible">
+    <motion.main className="space-y-6 px-6 py-12" initial="hidden" animate="visible" variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
       {/* 🌟 About Me Section */}
-      <motion.section className="space-y-4">
-        <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100">
+      <motion.section className="space-y-4" >
+        <h2 className="text-xl font-bold text-zinc-800 dark:text-zinc-200">
           About Me
         </h2>
         <p className="text-zinc-600 dark:text-zinc-400 max-w-lg">
-          Hey, I'm Khalil! I love building intuitive and performant web experiences.
-          My focus is on bridging design and development, ensuring that every digital
-          product I create is smooth, functional, and visually appealing.
-        </p>
-      </motion.section>
+  Building <span className="relative group">
+    <span className="underline cursor-pointer">robust</span>
+    <span className="absolute left-0 bottom-full mb-2 w-48 p-2 text-sm text-white bg-zinc-800 rounded opacity-0 group-hover:opacity-100 transition">
+      Strong, reliable, and able to handle different conditions effectively.
+    </span>
+  </span> systems with a focus on problem-solving, efficiency, and seamless functionality.
+</p>
 
-      {/* 🔥 Now Section */}
+      </motion.section>
       <motion.section className="space-y-4">
-        <h2 className="mb-3 text-lg font-medium">
+        <h2 className="text-md font-bold text-zinc-800 dark:text-zinc-200">
           Now
         </h2>
         <p className="text-zinc-600 dark:text-zinc-400">
-        I'm building tools that leverage DevOps to optimize software engineering workflows, exploring cloud computing to enhance scalability, and diving into distributed ledgers to push the boundaries of secure and decentralized systems. Through tackling complex logic challenges, I continuously refine my problem-solving skills, bridging the gap between infrastructure and innovation.
-        </p>
+        I build open-source tools because why do things manually when a script can suffer instead? <br/> <br/> Also, I ramble about code on my blog , check it out !       </p>
 
       </motion.section>
-
-      {/* 🎉 Fun Facts Section */}
-<motion.section className="space-y-4">
-  <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100">
-    Fun Facts
-  </h2>
-  <div className="grid gap-4 sm:grid-cols-2">
-    <div className="rounded-lg border p-4 dark:border-zinc-700">
-      <h3 className="text-lg font-medium">🔥 Night Owl Coder</h3>
-      <p className="text-sm text-zinc-500">
-        I do my best work late at night with a cup of coffee.
+      <section className="max-w-lg text-zinc-600 dark:text-zinc-400">
+      <h2 className="text-xl font-bold text-zinc-800 dark:text-zinc-200">Software Philosophy</h2>
+      <p className="mt-4">
+        Building your own way of thinking is a bit like debugging life itself—staring at the chaos,
+        questioning the rules, rewriting what doesn’t sit right.  <br/> Different people have different ways to find it.
+        I’m just here still refactoring thoughts.
       </p>
-    </div>
-    <div className="rounded-lg border p-4 dark:border-zinc-700">
-      <h3 className="text-lg font-medium">🎮 Gamer at Heart</h3>
-      <p className="text-sm text-zinc-500">
-        I enjoy playing strategy and open-world games in my free time.
-      </p>
-    </div>
-  </div>
-</motion.section>
-<motion.section
+      <p className="mt-4">
+        But for now, two immutable laws stand: <br/>
+        <br />   1. Any Tool must obey code minimalism — fewer lines, cleaner minds. <br/> <br/>
+        2. Data = user’s. No exceptions. <q>Long live DApps.</q> <cite>— Me</cite>
+        </p>
+    </section>
+<motion.section>
 
->
-  <h3 className="mb-3 text-lg font-medium">More</h3>
-  <p className="text-zinc-600 dark:text-zinc-400">
-    Once, I heard <i>"software is just code."</i> But then I realized—it really is just code.
-    The magic isn’t in the lines themselves, but in how you put them together.
-  </p>
   <p className="mt-2 text-zinc-600 dark:text-zinc-400">
     Check out my <a
     href="https://github.com/0xquirkai"
@@ -66,7 +71,7 @@ export default function AboutPage() {
     rel="noopener noreferrer"
     className="mt-4 inline-block font-medium text-dark-600 hover:underline dark:text-dark-400"
   >
-<FaGithub/>  </a>  I keep it updated with projects, experiments, and things I break on purpose.
+<FaGithub/>  </a>  I keep it updated with projects, experiments, and things I break on purpose ,
     You might find something useful or at least interesting.
   </p>
 

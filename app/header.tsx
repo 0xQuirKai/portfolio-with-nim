@@ -7,7 +7,7 @@ export function Header() {
     <header className="mb-8 flex items-center justify-between ">
       <div className='flex items-center gap-2'>
         <Link href="/" className="font-medium text-black dark:text-white">
-          Julien Nim
+          Khalil Tahraoui
         </Link> -
         <TextEffect
           as="p"
@@ -16,16 +16,17 @@ export function Header() {
           className="text-zinc-600 dark:text-zinc-500"
           delay={0.5}
         >
-          Design Engineer
+            Engineering Robust Systems
         </TextEffect>
       </div>
       <div className='flex items-center gap-4 justify-between'>
+      <Link href="/about" className="text-black dark:text-white">
+          About
+        </Link>
       <Link href="/solutions" className="text-black dark:text-white">
           Solutions
         </Link>
-        <Link href="/about" className="text-black dark:text-white">
-          About
-        </Link>
+
         <Link href="/blog" className="text-black dark:text-white">
           Blog
         </Link>
