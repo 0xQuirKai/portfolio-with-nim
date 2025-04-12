@@ -4,6 +4,7 @@ import './globals.css'
 import { Header } from './header'
 import { Footer } from './footer'
 import { ThemeProvider } from 'next-themes'
+import Head from 'next/head'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -14,8 +15,14 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: 'Khalil Tahraoui',
   description:
-    "I'm Khalil Tahraoui, a software engineer exploring cloud computing, Web3, and distributed systems. I build tools to streamline DevOps, solve complex logic problems, and push the boundaries of scalable infrastructure."
-}
+    "I'm Khalil Tahraoui, a software engineer exploring cloud computing, Web3, and distributed systems. I build tools to streamline DevOps, solve complex logic problems, and push the boundaries of scalable infrastructure.",
+  icons: {
+    icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_Palestine.svg/1920px-Flag_of_Palestine.svg.png',
+    shortcut: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_Palestine.svg/1920px-Flag_of_Palestine.svg.png',
+    apple: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_Palestine.svg/1920px-Flag_of_Palestine.svg.png',
+  },
+
+  }
 
 const geist = Geist({
   variable: '--font-geist',
@@ -34,6 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+
       <body
         className={`${geist.variable} ${geistMono.variable} bg-white tracking-tight antialiased dark:bg-zinc-900`}
       >
