@@ -80,7 +80,7 @@ export default function Personal() {
       >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-          Building reliable and efficient software that blends practical solutions with smooth, intuitive experiences, ensuring stability and ease of use in every interaction.          </p>
+          I build reliable, user-friendly software that runs smooth like clean code—stable, intuitive, and just makes sense.</p>
         </div>
       </motion.section>
 
