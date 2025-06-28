@@ -98,10 +98,7 @@ export default function Personal() {
         <p className="mb-5 text-zinc-600 dark:text-zinc-400">
        Open to opportunities, contributions, or discussions reach out and let’s create something impactful
 
-       Feel free to reach out via {' '}
-          <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>
-            email
-          </a>
+
         </p>
         <div className="flex items-center justify-start space-x-3">
           {SOCIAL_LINKS.map((link) => (

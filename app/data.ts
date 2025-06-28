@@ -44,6 +44,10 @@ export const SOCIAL_LINKS: SocialLink[] = [
     link: 'https://www.linkedin.com/in/khalil-tahraoui/',
   },
 
+{
+label :"Email",
+link:"mailto:Khalil.tahraoui1@gmail.com"
+}
 ]
 
 export const EMAIL = 'khalil.tahraoui1@gmail.com'
