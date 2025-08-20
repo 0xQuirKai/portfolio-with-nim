@@ -57,7 +57,8 @@ export default function ProjectList() {
   const tagColors = {
     Web: "bg-yellow-500",
     Go: "bg-blue-500",
-
+    Automation: "bg-purple-600",
+    Scraping: "bg-fuchsia-600",
   };
 
   return (

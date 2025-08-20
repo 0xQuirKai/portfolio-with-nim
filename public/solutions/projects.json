@@ -15,5 +15,32 @@
         "github": "https://github.com/0xQuirKai/golang-Ci-Cd-system",
         "image": "/cicd.jpg",
         "tags": ["Go"]
+    },
+    {
+        "name": "Ninja Coin",
+        "abbr": "NCL",
+        "description": "A modern landing page for Ninja Coin, built for web3 and crypto projects.",
+        "link": "https://ninja-coin-landing.vercel.app/",
+        "github": "https://github.com/0xQuirKai",
+        "image": "/ninja-coin.jpg",
+        "tags": ["Web"]
+    },
+    {
+        "name": "Collections of React Landing Pages",
+        "abbr": "Article",
+        "description": " ",
+        "link": "/blog/react-landings",
+        "github": "",
+        "image": "/react-landings.jpg",
+        "tags": ["Web"]
+    },
+    {
+        "name": "A Collection of Automation & Scraping Bot Wrappers",
+        "abbr": "Article",
+        "description": " ",
+        "link": "/blog/python-automation-scraping",
+        "github": "https://github.com/0xQuirKai",
+        "image": "/python-automation.jpg",
+        "tags": ["Automation", "Scraping"]
     }
 ]

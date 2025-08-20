@@ -29,8 +29,18 @@ export const BLOG_POSTS: BlogPost[] = [
     description: 'How idk is changing the way we design',
     link: '/blog/idk',
     uid: 'blog-1',
+    },{
+    title: 'Collections of React Landing Pages',
+    description: 'A curated article featuring the best and most creative React landing page templates and inspirations.',
+    link: '/blog/react-landings',
+    uid: 'blog-react-landings',
   },
-
+  {
+    title: 'Python Automation & Scraping',
+    description: 'A comprehensive article on automating tasks and scraping data using Python, with real-world examples and code.',
+    link: '/blog/python-automation-scraping',
+    uid: 'blog-python-automation-scraping',
+  }
 ]
 
 export const SOCIAL_LINKS: SocialLink[] = [
