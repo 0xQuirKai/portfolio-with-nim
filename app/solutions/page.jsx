@@ -6,8 +6,6 @@ import { FaGithub } from "react-icons/fa";
 import { motion } from 'motion/react'
 export default function ProjectList() {
   const [projects, setProjects] = useState([]);
-  const [hoveredProject, setHoveredProject] = useState(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [activeTag, setActiveTag] = useState("All");
 
   useEffect(() => {
@@ -26,10 +24,6 @@ export default function ProjectList() {
     activeTag === "All"
       ? projects
       : projects.filter((project) => project.tags.includes(activeTag));
-
-  const handleMouseMove = (e) => {
-    setPosition({ x: e.clientX + 15, y: e.clientY + 15 });
-  };
 
 
   const VARIANTS_CONTAINER = {
@@ -91,12 +85,12 @@ export default function ProjectList() {
       {/* Project Cards */}
       <div className="grid gap-4">
         {filteredProjects.map((project, index) => (
-          <div
+          <a
             key={index}
-            className="flex flex-col gap-2 p-4 rounded-lg border border-zinc-200 dark:border-zinc-700 transition hover:bg-zinc-100 dark:hover:bg-zinc-800 relative"
-            onMouseEnter={() => setHoveredProject(project)}
-            onMouseLeave={() => setHoveredProject(null)}
-            onMouseMove={handleMouseMove}
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col gap-2 p-4 rounded-lg border border-zinc-200 dark:border-zinc-700 transition hover:bg-zinc-100 dark:hover:bg-zinc-800 relative no-underline"
           >
             {/* Project Header with Name & Tags */}
             <div className="flex justify-between items-center">
@@ -126,13 +120,12 @@ export default function ProjectList() {
 
             {/* Icons */}
             <div className="flex gap-2 justify-end">
-              <a href={project.link} target="_blank" rel="noopener noreferrer">
+              <span>
                 <CgWebsite
                   size={18}
                   className="text-zinc-600 dark:text-zinc-400 hover:text-blue-500 dark:hover:text-blue-400 transition"
                 />
-              </a>
-
+              </span>
               <a href={project.github} target="_blank" rel="noopener noreferrer">
                 <FaGithub
                   size={20}
@@ -140,19 +133,10 @@ export default function ProjectList() {
                 />
               </a>
             </div>
-          </div>
+          </a>
         ))}
       </div>
       </motion.section>
-      {/* Floating Iframe Preview (Only for Hovered Project) */}
-      {hoveredProject && (
-        <iframe
-          src={hoveredProject.link}
-          title={hoveredProject.name}
-          className="fixed w-80 h-60 rounded-lg shadow-lg border border-zinc-300 dark:border-zinc-700 pointer-events-none z-10"
-          style={{ top: `${position.y}px`, left: `${position.x}px` }}
-        />
-      )}
     </motion.div>
   );
 }
