@@ -1,8 +1,4 @@
----
-title: Using Zero-Knowledge Proofs in Our Blockchain System
-description: How we integrated zk-SNARKs and zk-STARKs during the Huawei ICT Competition to enable privacy-preserving verification on blockchain.
-date: 2025-06-01
----
+
 
 # Using Zero-Knowledge Proofs in Our Blockchain System and Why
 
@@ -15,53 +11,27 @@ To solve this, I integrated **Zero-Knowledge Proof** mechanisms inspired by zk-S
 In a blockchain environment, all submitted data is typically transparent. This creates a conflict when sensitive attributes must be verified.
 
 The system required:
-- Verifying conditions like **user age ≥ 18**
+- Verifying conditions like user age ≥ 18
 - Ensuring data correctness on-chain
 - Preventing exposure of private inputs
 
-This introduces the constraint:
-
-$$
-x \geq 18
-$$
-
-without revealing:
-
-$$
-x
-$$
+This introduces the constraint: "x ≥ 18" without revealing the actual value of x.
 
 ## 1. Age verification using zk-SNARK-style constraints
 
 For structured on-chain verification, I converted the condition into an arithmetic constraint system.
 
 Let:
-- \( x \) = private user age
-- \( r \) = witness value
+- x = private user age
+- r = witness value
 
-The constraint is defined as:
-
-$$
-(x - 18) \cdot r = 0
-$$
+The constraint is defined as: (x - 18) * r = 0
 
 This ensures that only valid inputs can generate a valid proof.
 
-The prover generates:
+The prover generates a proof π = Prove(x, r) and submits it to the blockchain.
 
-$$
-\pi = \text{Prove}(x, r)
-$$
-
-and submits it to the blockchain.
-
-The smart contract only performs:
-
-$$
-\text{Verify}(\pi) = \text{true}
-$$
-
-without accessing \( x \).
+The smart contract only performs Verify(π) = true, without ever accessing x.
 
 This allowed the blockchain to enforce rules while preserving full input privacy.
 
@@ -69,25 +39,9 @@ This allowed the blockchain to enforce rules while preserving full input privacy
 
 For more complex validation logic, I used a trace-based execution model inspired by zk-STARK systems.
 
-Instead of proving a single constraint, the system proves correctness of an entire computation trace:
+Instead of proving a single constraint, the system proves correctness of an entire computation trace T = {s0, s1, ..., sn}, where each si represents a state transition.
 
-$$
-T = \{s_0, s_1, ..., s_n\}
-$$
-
-where each \( s_i \) represents a state transition in the computation.
-
-The proof guarantees:
-
-$$
-\exists T \; \text{such that} \; F(T) = \text{valid execution}
-$$
-
-without revealing:
-
-$$
-T
-$$
+The proof guarantees that there exists a valid execution trace T such that F(T) = valid execution, without revealing T.
 
 This was useful for:
 - Validating sensitive on-chain attributes
