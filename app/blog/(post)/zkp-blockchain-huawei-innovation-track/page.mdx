@@ -1,8 +1,4 @@
----
-title: Using Zero-Knowledge Proofs in Our Blockchain System
-description: How we integrated zk-SNARKs and zk-STARKs during the Huawei ICT Competition to enable privacy-preserving verification on blockchain.
-date: 2025-06-06
----
+
 
 # Using Zero-Knowledge Proofs in Our Blockchain System and Why
 
@@ -25,7 +21,7 @@ The system required:
 This introduces the constraint:
 
 \[
-x \geq 18
+x > 18
 \]
 
 without revealing the actual value of x.
@@ -44,7 +40,7 @@ Let:
 The constraint is defined as:
 
 \[
-(x - 18) \cdot r = 0
+(x−18) ⋅ r=0
 \]
 
 This ensures that only valid inputs can generate a valid proof.
