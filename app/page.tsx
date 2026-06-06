@@ -80,8 +80,35 @@ export default function Personal() {
       >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-         If you’re here, it means your business needs reliable software development or expert help to turn ideas into effective solutions , Congrats  🎉 , you just found the right guy. <br></br>   <br></br>From enterprise systems to scrappy MVPs, I deliver scalable, automated, AI-powered solutions that solve real World problems and get result at lower cost and with greater efficiency.
+  I am <span className="font-semibold text-zinc-900 dark:text-zinc-100">Khalil Tahraoui</span>, a 
+  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> Computer Systems Engineer</span> 
+  graduating from the 
+  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> École Nationale Polytechnique d'Oran (ENPO-MA)</span>.
+  <br /><br />
 
+  My Master's thesis focused on the 
+  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> design and implementation of a peer-to-peer (P2P) distributed federated learning system</span> 
+  with 
+  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> cloud supervision</span>. 
+  I integrated 
+  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> Zero-Knowledge Proof (ZKP) security layers</span> 
+  to address 
+  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> privacy, data integrity, and decentralized trust</span> 
+  in high-throughput environments.
+  <br /><br />
+
+  Beyond research, I developed strong expertise in 
+  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> large-scale distributed systems</span> and 
+  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> containerized architectures</span> 
+  using 
+  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> Docker</span> and 
+  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> Kubernetes</span>.
+  <br /><br />
+
+  I also led engineering teams to win the 
+  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> Huawei ICT Competition (National Level)</span> 
+  and secured top positions in multiple hackathons, validating 
+  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> system design, scalability, and execution under extreme constraints</span>.
 </p>
         </div>
       </motion.section>
