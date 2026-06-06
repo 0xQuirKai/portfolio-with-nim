@@ -1,0 +1,54 @@
+# Building an Adaptive IPFS-Based Distributed Storage System
+
+I started building a distributed storage system inspired by IPFS to understand how content-addressed networks behave under real load conditions.
+
+At first, everything worked correctly in controlled environments. Data was stored, retrieved, and replicated as expected. The issues only appeared during load testing, when the system was exposed to unstable networks, uneven access patterns, and variable node behavior.
+
+---
+
+# Problems encountered
+
+During load testing, three main issues consistently appeared.
+
+Peer behavior in the network was inconsistent, but the system treated all peers equally.
+
+Storage distribution became unbalanced over time, with certain blocks receiving significantly more requests than others.
+
+The consistency model was fixed, which caused inefficiencies under both low and high request loads.
+
+---
+
+# Fixing the system with adaptive algorithms
+
+## Adaptive peer selection
+
+The first issue was peer selection. The system selected peers without considering latency or reliability, which led to inconsistent response times during load testing.
+
+I introduced a scoring mechanism that evaluates each peer based on latency and failure rate. Peer selection is now dynamic and continuously adapts based on real-time conditions.
+
+**Technologies:** Go, IPFS, custom routing layer
+
+```go
+type Peer struct {
+	ID      string
+	Latency float64
+	Fail    int
+}
+
+func score(p Peer) float64 {
+	return (1/(p.Latency+1))*0.7 + (1/(float64(p.Fail)+1))*0.3
+}
+
+func selectPeer(peers []Peer) Peer {
+	best := peers[0]
+	bestScore := score(best)
+
+	for _, p := range peers {
+		s := score(p)
+		if s > bestScore {
+			best = p
+			bestScore = s
+		}
+	}
+	return best
+}
