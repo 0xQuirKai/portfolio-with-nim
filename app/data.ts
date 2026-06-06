@@ -35,7 +35,12 @@ export const BLOG_POSTS: BlogPost[] = [
   description: 'A systems-focused article on designing and orchestrating a cloud PaaS platform using OpenStack APIs, covering compute, networking, storage provisioning, and infrastructure lifecycle management.',
   link: '/blog/openstack-paas-atm-mobilis',
   uid: 'blog-openstack-paas-atm-mobilis',
-},
+},{
+  title: 'Using Zero-Knowledge Proofs in My Blockchain System (Huawei Innovation Track)',
+  description: 'A practical implementation of zk-SNARKs and zk-STARK-inspired techniques inside a blockchain system for privacy-preserving verification such as age validation and secure data constraints.',
+  link: '/blog/zkp-blockchain-huawei-innovation-track',
+  uid: 'blog-zkp-blockchain-huawei-innovation-track',
+} ,
   {
     title: 'Exploring the Intersection of idk',
     description: 'How idk is changing the way we design',
