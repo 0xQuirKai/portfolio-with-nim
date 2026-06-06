@@ -1,3 +1,8 @@
+---
+title: "Building an Adaptive IPFS-Based Distributed Storage System"
+description: "Designing a distributed storage system with adaptive behavior under load testing"
+---
+
 # Building an Adaptive IPFS-Based Distributed Storage System
 
 I started building a distributed storage system inspired by IPFS to understand how content-addressed networks behave under real load conditions.
@@ -6,7 +11,7 @@ At first, everything worked correctly in controlled environments. Data was store
 
 ---
 
-# Problems encountered
+## Problems encountered
 
 During load testing, three main issues consistently appeared.
 
@@ -18,11 +23,11 @@ The consistency model was fixed, which caused inefficiencies under both low and 
 
 ---
 
-# Fixing the system with adaptive algorithms
+## Fixing the system with adaptive algorithms
 
-## Adaptive peer selection
+### Adaptive peer selection
 
-The first issue was peer selection. The system selected peers without considering latency or reliability, which led to inconsistent response times during load testing.
+The system selected peers without considering latency or reliability, which led to inconsistent response times during load testing.
 
 I introduced a scoring mechanism that evaluates each peer based on latency and failure rate. Peer selection is now dynamic and continuously adapts based on real-time conditions.
 
@@ -52,3 +57,65 @@ func selectPeer(peers []Peer) Peer {
 	}
 	return best
 }
+```
+
+---
+
+### Adaptive replication and load balancing
+
+During load testing, some blocks became significantly more accessed than others, creating uneven pressure across nodes.
+
+I implemented adaptive replication based on access frequency and node load. Frequently accessed blocks are replicated more widely, while less accessed data is gradually reduced. When a node becomes overloaded, blocks are migrated to less loaded nodes.
+
+**Technologies:** IPFS, distributed storage layer, monitoring system
+
+```python
+def adjust_replication(block):
+    if block.access_count > HOT_THRESHOLD:
+        block.replication += 2
+    elif block.access_count < COLD_THRESHOLD:
+        block.replication = max(1, block.replication - 1)
+
+def rebalance(nodes):
+    for node in nodes:
+        if node.load > 0.8:
+            migrate_blocks(node)
+```
+
+---
+
+### Adaptive consistency control
+
+The system used a fixed consistency model, which created inefficiencies under different load testing conditions.
+
+I introduced adaptive consistency control that adjusts behavior based on current system load. Under high load, the system relaxes consistency requirements to maintain responsiveness. Under normal conditions, it enforces stronger guarantees.
+
+**Technologies:** Go, distributed systems, quorum-based replication
+
+```go
+type State struct {
+	Load float64
+}
+
+func consistency(state State) string {
+	if state.Load > 0.8 {
+		return "eventual"
+	}
+	if state.Load > 0.5 {
+		return "quorum"
+	}
+	return "strong"
+}
+```
+
+---
+
+## Conclusion
+
+The main challenge in distributed storage is not only storing data, but ensuring the system adapts correctly under conditions observed during load testing.
+
+By introducing adaptive mechanisms for peer selection, replication, and consistency, the system becomes more stable and efficient under varying workloads.
+
+I will deploy this system as soon as I finish working on my master thesis.
+
+**Technologies used:** Go, Python, IPFS, distributed systems design, adaptive algorithms
