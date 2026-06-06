@@ -18,35 +18,32 @@ The system required:
 
 This introduces the constraint:
 
-$x > 18$
+x > 18
 
 without revealing the actual value of x.
 
 ---
 
-## 1. Age verification using zk-SNARK-style constraints
+## 1. Age Verification Using zk-SNARK-style Constraints
 
-For structured verification, the condition is transformed into a **Rank-1 Constraint System (R1CS)** representation rather than a naive algebraic equation.
+A clean and effective way to prove `x ≥ 18` is to reframe the condition as:
 
-Let:
+**x = 18 + k**, where **k ≥ 0**
 
-- x = private user age  
-- r = witness (auxiliary variable used in circuit satisfaction)
+The prover must demonstrate that there exists a witness `k` satisfying this relationship. This is encoded as an arithmetic circuit that is satisfiable **only** when the condition holds.
 
-A correct constraint formulation ensures:
+In the circuit:
+- Private input: user’s age `x`
+- Auxiliary witness: `k`
+- The circuit enforces `x = 18 + k` and proves `k ≥ 0` (typically via bit decomposition or range-proof techniques)
 
-$(x - 18)(x - 18) ⋅ r = 0$
+The prover locally computes the witness assignment and generates a zero-knowledge proof:
 
-This avoids forcing trivial solutions and instead encodes correctness through circuit satisfiability rather than direct equality.
-
-The prover computes a witness assignment and generates a proof:
-
-$π=Prove(x,r)$
+π=Prove(x,r)
 
 The smart contract only performs:
 
-
-$Verify(π)→{true,false}$
+Verify(π)→{true,false}
 
 without accessing x or r.
 
@@ -66,12 +63,11 @@ For more complex validation logic, a trace-based execution model was used.
 
 Instead of proving a single constraint, the system proves correctness of a full execution trace:
 
-$T = \{s_0, s_1, ..., s_n\}$
+T = \{s_0, s_1, ..., s_n\}
 
 where each state si represents a deterministic computation step.
 
 The proof guarantees:
-
 
 ∃T such that F(T) = valid execution
 
