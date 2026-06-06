@@ -42,16 +42,25 @@ export default function AboutPage() {
       </motion.section>
 
      {/* 💻 2. What I Do Section */}
-      <motion.section className="space-y-3" variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
-        <h2 className="text-xl font-bold text-zinc-800 dark:text-zinc-200">
-          2. What I Do
-        </h2>
-      
-        <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
-          I build resilient, secure, and highly scalable digital infrastructure. My expertise combines decentralized intelligence and advanced security with cloud and platform engineering. This involves architecting trustless peer-to-peer networks and integrating cryptographic protocols like Zero-Knowledge proofs to guarantee absolute privacy and data integrity. Alongside security, I design large-scale, high-availability distributed systems using modern containerization and orchestration layers, backed by hands-on experience <a href="#" className="underline text-zinc-800 dark:text-zinc-200 hover:opacity-80 transition-opacity">deploying enterprise-grade PaaS solutions</a>.
-        </p>
-      </motion.section>
+      <motion.section
+  className="space-y-3"
+  variants={VARIANTS_SECTION}
+  transition={TRANSITION_SECTION}
+>
+  <h2 className="text-xl font-bold text-zinc-800 dark:text-zinc-200">
+    2. What I Do
+  </h2>
 
+  <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+    I use Python, Golang, and JavaScript to design and build large-scale distributed systems and cloud-native infrastructures.
+    <br /><br />
+
+    My work focuses on architecting cloud platforms where compute, storage, and networking are orchestrated into scalable and highly available systems, leveraging modern containerization and orchestration tools such as Docker and Kubernetes.
+    <br /><br />
+
+    On top of this infrastructure layer, I build and deploy AI-driven systems, including large-scale machine learning pipelines and distributed AI workloads, designed to operate efficiently in cloud environments.
+  </p>
+</motion.section>
       {/* 🧠 3. My Philosophy Section */}
       <motion.section className="space-y-3" variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
         <h2 className="text-xl font-bold text-zinc-800 dark:text-zinc-200">
@@ -60,10 +69,10 @@ export default function AboutPage() {
        
         <div className="text-zinc-600 dark:text-zinc-400 space-y-4 leading-relaxed">
           <p className="italic border-l-2 border-zinc-300 dark:border-zinc-700 pl-4 font-medium my-4">
-            "True innovation requires balancing absolute security with seamless scalability."
+          “In decentralized architectures, failure is not local"
           </p>
           <p>
-            I believe that the future of technology belongs to systems that are distributed by design and secure by default. I don't just build architecture that works; I engineer systems that endure. For me, engineering is a team sport—true success comes from combining rigorous academic research with pragmatic, battle-tested execution to solve real-world infrastructure bottlenecks.
+            I believe that the future of technology belongs to systems that are distributed by design and secure by default. 
           </p>
         </div>
       </motion.section>
