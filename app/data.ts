@@ -31,6 +31,12 @@ export const BLOG_POSTS: BlogPost[] = [
   uid: 'blog-adaptive-ipfs-distributed-storag',
 },
   {
+  title: 'Building a PaaS Platform with OpenStack APIs for ATM Mobilis',
+  description: 'A systems-focused article on designing and orchestrating a cloud PaaS platform using OpenStack APIs, covering compute, networking, storage provisioning, and infrastructure lifecycle management.',
+  link: '/blog/openstack-paas-atm-mobilis',
+  uid: 'blog-openstack-paas-atm-mobilis',
+},
+  {
     title: 'Exploring the Intersection of idk',
     description: 'How idk is changing the way we design',
     link: '/blog/idk',
