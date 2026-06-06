@@ -36,7 +36,7 @@ export const BLOG_POSTS: BlogPost[] = [
   link: '/blog/openstack-paas-atm-mobilis',
   uid: 'blog-openstack-paas-atm-mobilis',
 },{
-  title: 'Using Zero-Knowledge Proofs in My Blockchain System (Huawei Innovation Track)',
+  title: 'Using Zero-Knowledge Proofs in Our Blockchain System (Huawei Innovation Track) and Why ?',
   description: 'A practical implementation of zk-SNARKs and zk-STARK-inspired techniques inside a blockchain system for privacy-preserving verification such as age validation and secure data constraints.',
   link: '/blog/zkp-blockchain-huawei-innovation-track',
   uid: 'blog-zkp-blockchain-huawei-innovation-track',
