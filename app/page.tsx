@@ -34,8 +34,7 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
       >
         <p className="text-zinc-700 dark:text-zinc-300 text-lg leading-relaxed">
-          I design and build scalable AI and cloud systems powered by distributed architectures and modern infrastructure engineering.
-        </p>
+I design and build scalable AI and cloud systems using distributed architectures, containerized deployments, and cloud orchestration systems.        </p>
       </motion.section>
 
       {/* 2. CURRENT FOCUS */}
