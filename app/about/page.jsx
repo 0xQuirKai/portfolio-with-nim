@@ -35,11 +35,9 @@ export default function AboutPage() {
         <h2 className="text-xl font-bold text-zinc-800 dark:text-zinc-200">
           1. About Me
         </h2>
-        <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
-          Who is Khalil Tahraoui?
-        </p>
+        
         <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
-          I am a Computer Systems Engineer and a Master’s graduate from the École Nationale Polytechnique d'Oran (ENPO-MA). I sit at the intersection of distributed systems, advanced cryptography, and scalable cloud infrastructure. Driven by complex technical challenges, I have a proven track record of leading engineering teams to victory in high-stakes competitions like the Huawei ICT Competition (National Level) and various hackathons, proving my ability to design and execute under extreme constraints.
+          I am <strong> Khalil TAHRAOUI </strong> Computer Systems Engineer and a Master’s graduate from the École Nationale Polytechnique d'Oran (ENPO-MA). I sit at the intersection of  <strong>distributed systems , scalable cloud infrastructure and advanced cryptography </strong>. Driven by complex technical challenges, I have a proven track record of leading engineering teams to victory in high-stakes competitions like the  Huawei ICT Competition (National Level) and various hackathons, proving my ability to design and execute under extreme constraints.
         </p>
       </motion.section>
 
@@ -48,9 +46,7 @@ export default function AboutPage() {
         <h2 className="text-xl font-bold text-zinc-800 dark:text-zinc-200">
           2. What I Do
         </h2>
-        <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
-          What is my area of expertise?
-        </p>
+       
         <div className="text-zinc-600 dark:text-zinc-400 space-y-4 leading-relaxed">
           <p>
             I build resilient, secure, and highly scalable digital infrastructure. My core technical focus includes:
@@ -71,9 +67,7 @@ export default function AboutPage() {
         <h2 className="text-xl font-bold text-zinc-800 dark:text-zinc-200">
           3. My Philosophy
         </h2>
-        <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
-          What drives my work?
-        </p>
+       
         <div className="text-zinc-600 dark:text-zinc-400 space-y-4 leading-relaxed">
           <p className="italic border-l-2 border-zinc-300 dark:border-zinc-700 pl-4 font-medium my-4">
             "True innovation requires balancing absolute security with seamless scalability."
