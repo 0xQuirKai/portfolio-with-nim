@@ -1,8 +1,14 @@
+---
+title: Using Zero-Knowledge Proofs in Our Blockchain System
+description: How we integrated zk-SNARKs and zk-STARKs during the Huawei ICT Competition to enable privacy-preserving verification on blockchain.
+date: 2025-06-01
+---
+
 # Using Zero-Knowledge Proofs in Our Blockchain System and Why
 
-During the Huawei ICT Competition Innovation Track, we worked on a blockchain-based system where **privacy and verifiability** had to coexist. The core challenge was to validate sensitive conditions — such as age eligibility and data correctness — without exposing any underlying private information on-chain.
+During the **Huawei ICT Competition Innovation Track**, we worked on a blockchain-based system where privacy and verifiability had to coexist. The core challenge was to validate sensitive conditions — such as age eligibility and data correctness — without exposing any underlying private information on-chain.
 
-To solve this, I integrated **Zero-Knowledge Proof** mechanisms inspired by zk-SNARKs and zk-STARKs to enable privacy-preserving verification directly within the blockchain workflow.
+To solve this, I integrated **Zero-Knowledge Proof** mechanisms inspired by zk-SNARKs and zk-STARKs.
 
 ## Why Zero-Knowledge Proofs were needed
 
@@ -14,10 +20,13 @@ The system required:
 - Preventing exposure of private inputs
 
 This introduces the constraint:
+
 $$
 x \geq 18
 $$
+
 without revealing:
+
 $$
 x
 $$
@@ -31,6 +40,7 @@ Let:
 - \( r \) = witness value
 
 The constraint is defined as:
+
 $$
 (x - 18) \cdot r = 0
 $$
@@ -38,15 +48,19 @@ $$
 This ensures that only valid inputs can generate a valid proof.
 
 The prover generates:
+
 $$
 \pi = \text{Prove}(x, r)
 $$
+
 and submits it to the blockchain.
 
 The smart contract only performs:
+
 $$
 \text{Verify}(\pi) = \text{true}
 $$
+
 without accessing \( x \).
 
 This allowed the blockchain to enforce rules while preserving full input privacy.
@@ -56,16 +70,21 @@ This allowed the blockchain to enforce rules while preserving full input privacy
 For more complex validation logic, I used a trace-based execution model inspired by zk-STARK systems.
 
 Instead of proving a single constraint, the system proves correctness of an entire computation trace:
+
 $$
 T = \{s_0, s_1, ..., s_n\}
 $$
+
 where each \( s_i \) represents a state transition in the computation.
 
 The proof guarantees:
+
 $$
 \exists T \; \text{such that} \; F(T) = \text{valid execution}
 $$
+
 without revealing:
+
 $$
 T
 $$
