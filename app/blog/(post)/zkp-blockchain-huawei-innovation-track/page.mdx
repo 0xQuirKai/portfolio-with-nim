@@ -1,135 +1,109 @@
-# Using Zero-Knowledge Proofs in Our Blockchain System and Why ?
+# Using Zero-Knowledge Proofs in Our Blockchain System and Why
 
-During the Huawei ICT Competition Innovation Track, We worked on a blockchain-based system where privacy and verifiability had to coexist. The core challenge was to validate sensitive conditions such as age eligibility and data correctness without exposing any underlying private information on-chain.
+During the Huawei ICT Competition Innovation Track, we worked on a blockchain-based system where **privacy and verifiability** had to coexist. The core challenge was to validate sensitive conditions — such as age eligibility and data correctness — without exposing any underlying private information on-chain.
 
-To solve this, I integrated Zero-Knowledge Proof mechanisms inspired by zk-SNARKs and zk-STARKs to enable privacy-preserving verification directly within the blockchain workflow.
+To solve this, I integrated **Zero-Knowledge Proof** mechanisms inspired by zk-SNARKs and zk-STARKs to enable privacy-preserving verification directly within the blockchain workflow.
 
----
-
-# Why Zero-Knowledge Proofs were needed
+## Why Zero-Knowledge Proofs were needed
 
 In a blockchain environment, all submitted data is typically transparent. This creates a conflict when sensitive attributes must be verified.
 
 The system required:
-
-- Verifying conditions like user age ≥ 18  
-- Ensuring data correctness on-chain  
-- Preventing exposure of private inputs  
+- Verifying conditions like **user age ≥ 18**
+- Ensuring data correctness on-chain
+- Preventing exposure of private inputs
 
 This introduces the constraint:
-
-\[
+$$
 x \geq 18
-\]
-
+$$
 without revealing:
-
-\[
+$$
 x
-\]
+$$
 
----
-
-# 1. Age verification using zk-SNARK-style constraints
+## 1. Age verification using zk-SNARK-style constraints
 
 For structured on-chain verification, I converted the condition into an arithmetic constraint system.
 
 Let:
-
-- x = private user age  
-- r = witness value  
+- \( x \) = private user age
+- \( r \) = witness value
 
 The constraint is defined as:
-
-\[
+$$
 (x - 18) \cdot r = 0
-\]
+$$
 
 This ensures that only valid inputs can generate a valid proof.
 
 The prover generates:
-
-\[
+$$
 \pi = \text{Prove}(x, r)
-\]
-
+$$
 and submits it to the blockchain.
 
 The smart contract only performs:
-
-\[
+$$
 \text{Verify}(\pi) = \text{true}
-\]
-
-without accessing x.
+$$
+without accessing \( x \).
 
 This allowed the blockchain to enforce rules while preserving full input privacy.
 
----
-
-# 2. Privacy-preserving computation using zk-STARK-style traces
+## 2. Privacy-preserving computation using zk-STARK-style traces
 
 For more complex validation logic, I used a trace-based execution model inspired by zk-STARK systems.
 
 Instead of proving a single constraint, the system proves correctness of an entire computation trace:
-
-\[
+$$
 T = \{s_0, s_1, ..., s_n\}
-\]
-
-where each sᵢ represents a state transition in the computation.
+$$
+where each \( s_i \) represents a state transition in the computation.
 
 The proof guarantees:
-
-\[
+$$
 \exists T \; \text{such that} \; F(T) = \text{valid execution}
-\]
-
+$$
 without revealing:
-
-\[
+$$
 T
-\]
+$$
 
 This was useful for:
+- Validating sensitive on-chain attributes
+- Ensuring computation integrity across untrusted nodes
+- Enforcing correctness without exposing raw data
 
-- validating sensitive on-chain attributes  
-- ensuring computation integrity across untrusted nodes  
-- enforcing correctness without exposing raw data  
-
----
-
-# How ZKP integrates with the blockchain system
+## How ZKP integrates with the blockchain system
 
 The architecture follows a simple trust flow:
 
-- User submits private input off-chain  
-- Witness is generated locally  
-- ZK proof is created (SNARK/STARK-based logic depending on the case)  
-- Proof is submitted to smart contract  
-- Smart contract verifies proof only  
+- User submits private input off-chain
+- Witness is generated locally
+- ZK proof is created (SNARK/STARK-based logic depending on the case)
+- Proof is submitted to smart contract
+- Smart contract verifies proof only
 
 No sensitive information is ever stored on-chain.
 
----
-
-# Impact in the Huawei Innovation Track
+## Impact in the Huawei Innovation Track
 
 This design enabled the blockchain system to:
+- Enforce verification rules without exposing private data
+- Maintain trustless validation on-chain
+- Separate computation from data disclosure
+- Strengthen privacy guarantees in a transparent ledger environment
 
-- enforce verification rules without exposing private data  
-- maintain trustless validation on-chain  
-- separate computation from data disclosure  
-- strengthen privacy guarantees in a transparent ledger environment  
-
----
-
-# Conclusion
+## Conclusion
 
 Zero-Knowledge Proofs were used as a cryptographic enforcement layer inside a blockchain system, enabling verification without disclosure.
 
 This shifted the system model from:
+- “blockchain exposes everything but verifies correctness”
+- to
+- “blockchain verifies correctness without ever seeing the data”
 
-- blockchain exposes everything but verifies correctness  
-to  
-- blockchain verifies correctness without ever seeing the data
+---
+
+**We are actively looking for funding** as this is a B2G (Business-to-Government) project.
