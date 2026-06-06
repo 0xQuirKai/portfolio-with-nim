@@ -1,0 +1,130 @@
+
+
+# How I Used OpenStack APIs to Build a PaaS for ATM Mobilis
+
+This article focuses strictly on the infrastructure and cloud orchestration layer of a Platform as a Service (PaaS) system we designed for ATM Mobilis using OpenStack APIs. It does not cover web development or application backend implementation. The focus is entirely on cloud infrastructure design, provisioning, and automation.
+
+---
+
+# Context
+
+The goal of the project was to design a PaaS layer that abstracts cloud infrastructure complexity and allows controlled provisioning of compute, networking, and storage resources on demand.
+
+We built this system on top of :contentReference[oaicite:0]{index=0}, leveraging its APIs as the core infrastructure control plane.
+
+---
+
+# What we built on top of OpenStack
+
+Instead of interacting manually with cloud resources, we built a control layer that orchestrates:
+
+- Compute provisioning
+- Network configuration
+- Storage allocation
+- Resource lifecycle management
+
+All infrastructure operations were executed through OpenStack APIs.
+
+---
+
+# OpenStack API layer usage
+
+We relied on the core OpenStack services:
+
+- Nova for compute provisioning  
+- Neutron for networking configuration  
+- Cinder for block storage management  
+- Keystone for authentication and service identity  
+
+This allowed us to treat infrastructure as programmable resources rather than manual configurations.
+
+---
+
+# Infrastructure orchestration workflow
+
+The platform follows a structured provisioning pipeline:
+
+```text
+Request → Resource validation → OpenStack API calls → Provisioned infrastructure → Status tracking
+```
+
+Each request triggers a controlled sequence of OpenStack operations to ensure consistent infrastructure deployment.
+
+---
+
+# Compute provisioning (Nova)
+
+We used the compute API to dynamically provision virtual machines based on workload requirements.
+
+Key operations included:
+- VM creation
+- Flavor selection
+- Image management
+- Instance lifecycle control
+
+```text
+Nova API → VM instance → Assigned compute resources
+```
+
+---
+
+# Networking layer (Neutron)
+
+Networking was fully abstracted using OpenStack networking APIs.
+
+We handled:
+- Private network creation
+- Subnet allocation
+- Floating IP assignment
+- Security group configuration
+
+This ensured isolated and controlled communication between deployed resources.
+
+---
+
+# Storage management (Cinder)
+
+Storage volumes were dynamically attached to compute instances.
+
+We used:
+- Volume creation
+- Attachment to instances
+- Persistent storage lifecycle management
+
+This allowed workloads to maintain state independently of compute instances.
+
+---
+
+# Resource lifecycle management
+
+A key part of the system was managing the full lifecycle of resources:
+
+- Provisioning
+- Monitoring state
+- Scaling operations
+- Decommissioning unused resources
+
+This ensured infrastructure efficiency and prevented resource waste during operation.
+
+---
+
+# Key engineering challenges
+
+During implementation, the main challenges were not application-level, but infrastructure-level:
+
+- Ensuring consistent API orchestration across services  
+- Managing dependency ordering between compute, network, and storage  
+- Handling partial failures during provisioning  
+- Maintaining consistent state across distributed resources  
+
+---
+
+# Conclusion
+
+This project demonstrated how OpenStack APIs can be used as a foundation for building a PaaS layer that abstracts infrastructure complexity while maintaining fine-grained control over compute, networking, and storage resources.
+
+The focus was entirely on cloud infrastructure orchestration and distributed resource management, not on application or backend design.
+
+I worked on this project with my team as part of a real-world deployment scenario for ATM Mobilis, focusing on building reliable and scalable infrastructure automation on top of OpenStack.
+
+---
