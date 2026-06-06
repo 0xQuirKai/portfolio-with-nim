@@ -79,36 +79,30 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
       >
         <div className="flex-1">
-          <p className="text-zinc-600 dark:text-zinc-400">
-  I am <span className="font-semibold text-zinc-900 dark:text-zinc-100">Khalil Tahraoui</span>, a 
-  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> Computer Systems Engineer</span> 
-  graduating from the 
-  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> École Nationale Polytechnique d'Oran (ENPO-MA)</span>.
+          <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+  I am <span className="font-semibold text-zinc-900 dark:text-zinc-100">Khalil Tahraoui</span>, a Computer Systems Engineer graduating from the École Nationale Polytechnique d'Oran (ENPO-MA).
   <br /><br />
 
-  My Master's thesis focused on the 
-  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> design and implementation of a peer-to-peer (P2P) distributed federated learning system</span> 
-  with 
-  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> cloud supervision</span>. 
-  I integrated 
-  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> Zero-Knowledge Proof (ZKP) security layers</span> 
-  to address 
-  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> privacy, data integrity, and decentralized trust</span> 
-  in high-throughput environments.
+  My Master's thesis focused on the design and implementation of a peer-to-peer (P2P) distributed federated learning system with cloud supervision. I integrated Zero-Knowledge Proof (ZKP) security layers to address privacy, data integrity, and decentralized trust in high-throughput environments.
   <br /><br />
 
-  Beyond research, I developed strong expertise in 
-  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> large-scale distributed systems</span> and 
-  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> containerized architectures</span> 
-  using 
-  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> Docker</span> and 
-  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> Kubernetes</span>.
+  Beyond research, I developed strong expertise in{" "}
+  <span className="font-semibold text-zinc-900 dark:text-zinc-100">large-scale distributed systems</span>,{" "}
+  <span className="font-semibold text-zinc-900 dark:text-zinc-100">containerized architectures</span>, using{" "}
+  <span className="font-semibold text-zinc-900 dark:text-zinc-100">Docker</span> and{" "}
+  <span className="font-semibold text-zinc-900 dark:text-zinc-100">Kubernetes</span>. I also contributed to the deployment of a PaaS platform integrated with ATM Mobilis using OpenStack APIs.
+  {" "}
+  <a
+    href="https://www.openstack.org/"
+    target="_blank"
+    className="text-zinc-900 dark:text-zinc-100 underline underline-offset-4"
+  >
+    (OpenStack reference)
+  </a>
+  .
   <br /><br />
 
-  I also led engineering teams to win the 
-  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> Huawei ICT Competition (National Level)</span> 
-  and secured top positions in multiple hackathons, validating 
-  <span className="font-semibold text-zinc-900 dark:text-zinc-100"> system design, scalability, and execution under extreme constraints</span>.
+  I also led engineering teams to win the Huawei ICT Competition (National Level) and secured top positions in multiple hackathons, validating system design, scalability, and execution under extreme constraints.
 </p>
         </div>
       </motion.section>
