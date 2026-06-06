@@ -1,7 +1,3 @@
----
-title: "Building an Adaptive IPFS-Based Distributed Storage System"
-description: "Designing a distributed storage system with adaptive behavior under load testing"
----
 
 # Building an Adaptive IPFS-Based Distributed Storage System
 
@@ -112,9 +108,7 @@ func consistency(state State) string {
 
 ## Conclusion
 
-The main challenge in distributed storage is not only storing data, but ensuring the system adapts correctly under conditions observed during load testing.
-
-By introducing adaptive mechanisms for peer selection, replication, and consistency, the system becomes more stable and efficient under varying workloads.
+Building this infrastructure proved that true reliability in high-capacity distributed environments cannot rely on static configuration maps. By coupling peer matching protocols, storage replication density, and consistency rules directly to real-time performance metrics, the architecture transforms from a rigid array of machines into a self-balancing, self-healing data fabric.
 
 I will deploy this system as soon as I finish working on my master thesis.
 
