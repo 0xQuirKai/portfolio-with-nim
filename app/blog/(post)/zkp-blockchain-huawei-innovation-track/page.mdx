@@ -36,8 +36,8 @@ For structured on-chain verification, I converted the condition into an arithmet
 
 Let:
 
-- \( x \) = private user age  
-- \( r \) = witness value  
+- x = private user age  
+- r = witness value  
 
 The constraint is defined as:
 
@@ -61,7 +61,7 @@ The smart contract only performs:
 \text{Verify}(\pi) = \text{true}
 \]
 
-without accessing \( x \).
+without accessing x.
 
 This allowed the blockchain to enforce rules while preserving full input privacy.
 
@@ -77,7 +77,7 @@ Instead of proving a single constraint, the system proves correctness of an enti
 T = \{s_0, s_1, ..., s_n\}
 \]
 
-where each \( s_i \) represents a state transition in the computation.
+where each sᵢ represents a state transition in the computation.
 
 The proof guarantees:
 
@@ -130,8 +130,6 @@ Zero-Knowledge Proofs were used as a cryptographic enforcement layer inside a bl
 
 This shifted the system model from:
 
-- “blockchain exposes everything but verifies correctness”  
+- blockchain exposes everything but verifies correctness  
 to  
-- “blockchain verifies correctness without ever seeing the data”
-
-WE ARE ACTIVELY LOOKING FOR FUNDING AS THIS IS A B2G PROJECT
+- blockchain verifies correctness without ever seeing the data
