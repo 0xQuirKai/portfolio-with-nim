@@ -25,6 +25,12 @@ type SocialLink = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+  title: 'Building an Adaptive IPFS-Based Distributed Storage System',
+  description: 'An in-depth article on designing a distributed storage system inspired by IPFS, focusing on adaptive peer selection, replication strategies, and consistency control under load testing.',
+  link: '/blog/adaptive-ipfs-based-system',
+  uid: 'blog-adaptive-ipfs-distributed-storag',
+},
+  {
     title: 'Exploring the Intersection of idk',
     description: 'How idk is changing the way we design',
     link: '/blog/idk',
