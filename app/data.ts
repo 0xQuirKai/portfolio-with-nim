@@ -42,6 +42,12 @@ export const BLOG_POSTS: BlogPost[] = [
   uid: 'blog-zkp-blockchain-huawei-innovation-track',
 } ,
   {
+  title: 'Performance Modeling in Cloud-Edge Distributed Systems',
+  description: 'A technical exploration of performance modeling techniques in distributed systems, focusing on latency decomposition, queueing theory, scalability limits, and workload-driven behavior in Cloud-Edge environments.',
+  link: '/blog/performance-modeling-cloud-edge-distributed-systems',
+  uid: 'blog-performance-modeling-cloud-edge-distributed-systems'
+},
+  {
     title: 'Exploring the Intersection of idk',
     description: 'How idk is changing the way we design',
     link: '/blog/idk',
