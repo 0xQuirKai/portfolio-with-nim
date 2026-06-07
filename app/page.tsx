@@ -61,16 +61,16 @@ I design and build scalable AI and cloud systems using distributed architectures
         </h3>
 
         <div className="space-y-2 text-zinc-600 dark:text-zinc-400">
-          <a className="block hover:text-zinc-900 dark:hover:text-zinc-100 transition" href="#">
-            Understanding OpenStack API Architecture
+          <a className="block hover:text-zinc-900 dark:hover:text-zinc-100 transition" href="/blog/adaptive-ipfs-based-system">
+           Building an Adaptive IPFS-Based Distributed Storage System
           </a>
 
-          <a className="block hover:text-zinc-900 dark:hover:text-zinc-100 transition" href="#">
-            Building Distributed AI Systems at Scale
+          <a className="block hover:text-zinc-900 dark:hover:text-zinc-100 transition" href="/blog/openstack-paas-atm-mobilis">
+            Building a PaaS Platform with OpenStack APIs for ATM Mobilis
           </a>
 
-          <a className="block hover:text-zinc-900 dark:hover:text-zinc-100 transition" href="#">
-            Designing Secure Cloud-Native Infrastructure
+          <a className="block hover:text-zinc-900 dark:hover:text-zinc-100 transition" href="/blog/zkp-blockchain-huawei-innovation-track">
+           Using Zero-Knowledge Proofs in Our Blockchain System and Why ?
           </a>
         </div>
       </motion.section>
