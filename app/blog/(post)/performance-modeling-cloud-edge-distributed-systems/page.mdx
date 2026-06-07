@@ -1,184 +1,241 @@
 
 # Performance Modeling in Distributed Systems
 
-Distributed systems are inherently dynamic. Workloads fluctuate, nodes are heterogeneous, and network conditions vary continuously. Performance modeling provides a mathematical way to predict system behavior under these conditions.
+Distributed systems exhibit non-deterministic behavior under dynamic workloads, heterogeneous infrastructure, and network variability. Performance modeling provides a structured way to analyze and predict system behavior before and during deployment.
 
-The objective is to understand latency, throughput, and stability under load.
+The objective is to understand how latency, throughput, and stability evolve under load.
 
 ---
 
 ## System decomposition
 
-A distributed system can be modeled as a combination of components:
+A distributed system can be modeled as interacting components:
 
 - computation delay  
-- network delay  
+- network transmission delay  
 - queueing delay  
 - synchronization overhead  
 
-Total latency is expressed as:
+Total latency:
 
 L_total = L_compute + L_network + L_queue + L_sync
 
-Each component becomes dominant depending on system load and architecture design.
-
 ---
 
-## Queueing theory model
+## Queueing model
 
-A standard abstraction is the M/M/1 queue model.
+We use a classical M/M/1 abstraction.
 
-We define:
+λ = arrival rate  
+μ = service rate  
 
-λ = arrival rate of requests  
-μ = service rate of the system  
-
-System utilization is:
+System utilization:
 
 ρ = λ / μ
 
-When ρ approaches 1, the system becomes saturated and performance degrades rapidly.
+System behavior:
+
+- if ρ < 1 → stable system  
+- if ρ approaches 1 → congestion increases sharply  
+- if ρ ≥ 1 → system becomes unstable  
 
 ---
 
 ## Response time model
 
-The average response time is:
-
 T = 1 / (μ - λ)
 
-This expression shows three important behaviors:
-
-- when λ is much smaller than μ, latency remains low  
-- when λ approaches μ, latency increases sharply  
-- when λ is greater than or equal to μ, the system becomes unstable  
+This captures the non-linear explosion of latency near saturation.
 
 ---
 
-## Multi-node scaling behavior
+## Multi-node scaling model
 
-For a system with N distributed nodes:
+For N nodes:
 
 λ_i = λ / N
 
-In practice, scaling is not linear due to coordination overhead and imbalance.
-
-We introduce an overhead function δ(N):
+However real systems introduce coordination overhead:
 
 T(N) = 1 / (μ - λ / N) + δ(N)
 
-Where δ(N) represents:
+Where δ(N) includes:
 
-- synchronization overhead  
-- communication cost  
-- load imbalance across nodes  
-
-As N increases, δ(N) can become a dominant factor limiting scalability.
+- synchronization cost  
+- scheduling overhead  
+- network contention  
 
 ---
 
-## Cloud-Edge latency model
+# Implementation: Simulation using SimPy
 
-In Cloud-Edge-IoT systems, latency is divided into:
+To validate analytical models, we use **SimPy**, a process-based discrete-event simulation library.
 
-L = L_edge + L_cloud + L_transfer
+### Dependencies
 
-Where:
-
-- L_edge is processing delay at edge nodes  
-- L_cloud is processing delay in the central cloud  
-- L_transfer is communication delay between layers  
-
-Edge computing reduces L_transfer but may increase L_edge under heavy load.
+```bash
+pip install simpy numpy matplotlib
+```
 
 ---
 
-## Stability condition
+## Basic queue simulation model
 
-A distributed system remains stable when:
+```python
+import simpy
+import random
 
-λ < μ_effective
+RANDOM_SEED = 42
+λ = 5.0   # arrival rate
+μ = 7.0   # service rate
 
-Where:
+def request(env, server):
+    arrival_time = env.now
 
-μ_effective = sum of service rates of all nodes minus coordination_overhead
+    with server.request() as req:
+        yield req
+        service_time = random.expovariate(μ)
+        yield env.timeout(service_time)
 
-If λ exceeds μ_effective, queue lengths grow without bound and system performance collapses.
+        latency = env.now - arrival_time
+        latencies.append(latency)
 
----
+def generator(env, server):
+    while True:
+        yield env.timeout(random.expovariate(λ))
+        env.process(request(env, server))
 
-## Time-varying workloads
+latencies = []
 
-In real-world systems, arrival rate is not constant:
+env = simpy.Environment()
+server = simpy.Resource(env, capacity=1)
 
-λ = λ(t)
+env.process(generator(env, server))
+env.run(until=200)
 
-This requires adaptive estimation techniques such as:
-
-- sliding window averaging  
-- exponential smoothing  
-- feedback-based load adaptation  
-
----
-
-## Bottlenecks in real systems
-
-Common performance bottlenecks include:
-
-- queue buildup under burst traffic  
-- network congestion  
-- uneven load distribution  
-- synchronization delays in distributed coordination  
-
-These effects are often non-linear and become more severe under high load.
+print("Average latency:", sum(latencies) / len(latencies))
+```
 
 ---
 
-## Performance evaluation metrics
+## Multi-node extension model
 
-System performance is evaluated using:
+```python
+class EdgeNode:
+    def __init__(self, env):
+        self.env = env
+        self.server = simpy.Resource(env, capacity=1)
 
-- average response time  
-- throughput (requests per second)  
-- utilization ratio ρ  
-- tail latency (P95, P99)  
-- saturation threshold under increasing load  
+def distributed_request(env, nodes):
+    node = random.choice(nodes)
+    arrival = env.now
 
----
+    with node.server.request() as req:
+        yield req
+        service = random.expovariate(μ)
+        yield env.timeout(service)
 
-## Implementation stack
-
-Performance models are validated using:
-
-- Python simulation environments  
-- Kubernetes-based deployments  
-- Prometheus for metrics collection  
-- OpenTelemetry for distributed tracing  
-
----
-
-## Research direction
-
-Modern performance modeling is evolving toward:
-
-- adaptive runtime models  
-- integration with autonomic control systems  
-- hybrid analytical and data-driven approaches  
-- edge-aware optimization strategies  
+        latencies.append(env.now - arrival)
+```
 
 ---
 
-## Conclusion
+## What this simulation captures
 
-Performance modeling transforms distributed systems from unpredictable infrastructures into analyzable systems.
+- queue buildup under high λ  
+- latency explosion near saturation  
+- effect of distributed load balancing  
+- variability across nodes  
 
-However, real deployments often deviate from theoretical models due to:
+---
 
-- bursty workloads  
-- heterogeneous infrastructure  
-- network variability  
-- coordination overhead  
+# Research direction (strengthened)
 
-Bridging this gap remains a key research challenge in Cloud-Edge systems.
+Modern performance modeling in Cloud-Edge systems is evolving in four key directions:
+
+---
+
+## 1. Adaptive queueing models
+
+Instead of fixed λ and μ, systems estimate:
+
+λ = λ(t)  
+μ = μ(t)
+
+Using runtime telemetry:
+
+- Prometheus metrics  
+- OpenTelemetry traces  
+- kernel-level counters  
+
+This enables online performance prediction.
+
+---
+
+## 2. Hybrid analytical + simulation models
+
+Research increasingly combines:
+
+- queueing theory (closed-form models)  
+- discrete-event simulation (SimPy, OMNeT++)  
+- data-driven correction models  
+
+A hybrid predictor:
+
+T_pred = T_theoretical + ε_learned
+
+where ε_learned is a learned correction term.
+
+---
+
+## 3. Cloud-Edge workload partitioning models
+
+A key research problem:
+
+How to split λ between edge and cloud?
+
+λ = λ_edge + λ_cloud
+
+Optimization objective:
+
+minimize latency while maintaining stability:
+
+minimize T_total subject to ρ_edge < 1 and ρ_cloud < 1
+
+---
+
+## 4. Integration with autonomic systems
+
+Performance models are increasingly embedded into control loops:
+
+- monitor latency  
+- analyze saturation  
+- adjust resource allocation  
+- re-balance workloads  
+
+This directly connects to MAPE-K style systems.
+
+---
+
+## Key references (important papers)
+
+- Kleinrock, L. “Queueing Systems, Volume 1: Theory”
+- Dean, J., Barroso, L. “The Tail at Scale”
+- Harchol-Balter, “Performance Modeling and Design of Computer Systems”
+- Chen et al., “Edge Computing: Vision and Challenges”
+
+---
+
+# Conclusion
+
+Performance modeling provides the mathematical foundation for reasoning about distributed system behavior.
+
+However, real systems require:
+
+- adaptive modeling of λ and μ  
+- simulation-based validation  
+- integration with runtime control systems  
+
+Bridging analytical models and real-world behavior remains a central challenge in Cloud-Edge system research.
 
 ---
